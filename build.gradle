@@ -1,0 +1,39 @@
+// Apply the java plugin to add support for Java
+apply plugin: 'java'
+
+// Apply the application plugin to add support for building an application
+apply plugin: 'application'
+distZip.enabled = false
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://repository.jboss.org/nexus/content/repositories/releases/'
+    }
+}
+
+dependencies {
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+
+    compile 'org.slf4j:slf4j-api:1.7.2',
+            'ch.qos.logback:logback-classic:1.0.9'
+
+    compile "io.undertow:undertow-core:$project.undertowVersion",
+            "io.undertow:undertow-servlet:$project.undertowVersion",
+            "io.undertow.jastow:jastow:$project.jastowVersion",
+            'javax.servlet:jstl:1.2',
+            'javax.servlet.jsp:jsp-api:2.2',
+            'org.jboss.metadata:jboss-metadata-common:8.0.0.Final',
+            'org.jboss.metadata:jboss-metadata-web:8.0.0.Final'
+
+    runtime "org.jboss.spec.javax.servlet.jsp:jboss-jsp-api_2.3_spec:$project.jspApiVersion",
+            "org.eclipse.jdt.core.compiler:ecj:$project.ecjVersion",
+            "org.glassfish:javax.el:$project.elVersion"
+
+    compile 'com.dorkbox:Annotations:2.14'
+}
+
+mainClassName = 'App'
+
