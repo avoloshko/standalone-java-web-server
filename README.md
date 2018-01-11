@@ -1,4 +1,4 @@
-# JavaEEStandaloneAppServer
+# Stand-alone Java Web Server
 
 Undertow is an extremely lightweight web server. Not only the demo shows how to use Undertow but utilizes the most nessasary parts of a Java EE application.
 
